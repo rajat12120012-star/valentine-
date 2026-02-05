@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Us 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{
+  margin:0;height:100vh;
+  background:linear-gradient(135deg,#ffb6c1,#ffdde1);
+  display:flex;justify-content:center;align-items:center;
+  font-family:Arial;text-align:center;
+}
+.box{
+  background:white;padding:20px;border-radius:25px;
+  width:90%;max-width:380px;
+}
+img{width:100%;border-radius:20px;}
+button{
+  margin-top:15px;padding:10px 25px;
+  border:none;border-radius:20px;
+  background:#ff4d6d;color:white;
+}
+</style>
+</head>
+
+<body onclick="playMusic()">
+<audio id="bgm" src="music.mp3" loop></audio>
+
+<div class="box">
+  <img src="photo2.jpg">
+  <p>
+    Some moments don’t need words,<br>
+    they just need *us* 💞
+  </p>
+  <button onclick="next()">Next 💕</button>
+</div>
+
+<script>
+const m=document.getElementById("bgm");
+function playMusic(){if(localStorage.getItem("music")==="on")m.play();}
+playMusic();
+function next(){location.href="page3.html";}
+</script>
+</body>
+</html>
