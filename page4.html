@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Moments 💞</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{
+  margin:0;height:100vh;
+  background:#ffdde1;
+  display:flex;justify-content:center;align-items:center;
+  font-family:Arial;
+}
+button{
+  padding:12px 25px;border:none;border-radius:25px;
+  background:#ff4d6d;color:white;
+}
+</style>
+</head>
+
+<body onclick="playMusic()">
+<audio id="bgm" src="music.mp3" loop></audio>
+
+<button onclick="next()">Don’t click this button 😅</button>
+
+<script>
+const m=document.getElementById("bgm");
+function playMusic(){if(localStorage.getItem("music")==="on")m.play();}
+playMusic();
+function next(){location.href="page5.html";}
+</script>
+</body>
+</html>
