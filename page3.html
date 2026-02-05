@@ -1,51 +1,131 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <title>Love Letter 💌</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
 body{
-  margin:0;height:100vh;
-  display:flex;justify-content:center;align-items:center;
-  background:#fad0c4;font-family:Arial;
+  margin:0;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#fad0c4;
+  font-family:Arial,sans-serif;
 }
+
+/* Envelope */
 .envelope{
-  width:320px;height:200px;
-  background:#ff9a9e;border-radius:15px;
-  position:relative;cursor:pointer;
+  width:340px;
+  height:220px;
+  background:#ff9a9e;
+  border-radius:18px;
+  position:relative;
+  cursor:pointer;
+  box-shadow:0 12px 30px rgba(0,0,0,0.25);
 }
+
+/* Letter */
 .letter{
-  position:absolute;bottom:0;width:100%;
-  height:0;background:white;
-  overflow:hidden;transition:1.5s;
-  padding:15px;border-radius:15px;
+  position:absolute;
+  bottom:0;
+  width:100%;
+  height:0;
+  background:white;
+  overflow:hidden;
+  transition:height 1.6s ease;
+  border-radius:18px;
+  padding:0 16px;
 }
-.open .letter{height:360px;}
-p{font-size:14px;color:#ff4d6d;}
+
+/* When opened */
+.envelope.open .letter{
+  height:420px;
+}
+
+/* Lyrics text */
+.lyrics{
+  margin-top:15px;
+  font-size:14px;
+  line-height:1.6;
+  color:#ff4d6d;
+  max-height:340px;
+  overflow-y:auto;
+}
+
+/* Scrollbar styling (optional but nice) */
+.lyrics::-webkit-scrollbar{
+  width:5px;
+}
+.lyrics::-webkit-scrollbar-thumb{
+  background:#ff9a9e;
+  border-radius:5px;
+}
+
+button{
+  margin:12px auto 10px;
+  display:block;
+  padding:10px 26px;
+  border:none;
+  border-radius:25px;
+  background:#ff4d6d;
+  color:white;
+  font-size:15px;
+  cursor:pointer;
+}
 </style>
 </head>
 
 <body onclick="playMusic()">
+
+<!-- Music -->
 <audio id="bgm" src="music.mp3" loop></audio>
 
-<div class="envelope" onclick="this.classList.add('open')">
+<div class="envelope" onclick="openLetter()">
   <div class="letter">
-<p>
+
+    <div class="lyrics">
 Akhan nu teri surat jach gayi,<br>
-Dil nu jach geya tu sajna…<br><br>
-Main tere layi sab chadd baithi,<br>
-Tu vi sab kujh chhod ke aa 💖
-</p>
-<button onclick="next()">Next 💘</button>
+Dil nu jach geya tu sajna,<br>
+Dass horan nu vekh ke ki karne,<br>
+Mainu labh geya tu sajna.<br><br>
+
+Kinjh kaha main dil diyan gallan,<br>
+Dil diyan gallan keh na paava,<br>
+Tu tan kalla reh paina aa,<br>
+Main tere bin reh na paava.<br><br>
+
+Lokkan layi tan chann pyara,<br>
+Mere layi tera muh sajna,<br>
+Akhan nu teri surat jach gayi,<br>
+Dil nu jach geya.<br><br>
+
+    </div>
+
+    <button onclick="next()">Next 💘</button>
+
   </div>
 </div>
 
 <script>
-const m=document.getElementById("bgm");
-function playMusic(){if(localStorage.getItem("music")==="on")m.play();}
-playMusic();
-function next(){location.href="page4.html";}
+const music=document.getElementById("bgm");
+
+function playMusic(){
+  if(localStorage.getItem("music")==="on"){
+    music.play().catch(()=>{});
+  }
+}
+
+function openLetter(){
+  document.querySelector(".envelope").classList.add("open");
+}
+
+function next(){
+  window.location.href="page4.html";
+}
 </script>
+
 </body>
 </html>
