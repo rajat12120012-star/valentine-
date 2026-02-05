@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Valentine 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{
+  margin:0;height:100vh;
+  display:flex;justify-content:center;align-items:center;
+  background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+  font-family:Arial;
+}
+.card{
+  background:white;padding:30px;border-radius:20px;
+  width:90%;max-width:360px;text-align:center;
+  position:relative;
+}
+button{
+  padding:12px 25px;border:none;border-radius:25px;
+  font-size:16px;cursor:pointer;
+}
+.yes{background:#ff4d6d;color:white;}
+.no{
+  background:#ddd;position:absolute;left:20px;top:150px;
+}
+</style>
+</head>
+
+<body onclick="startMusic()">
+
+<audio id="bgm" src="music.mp3" loop></audio>
+
+<div class="card">
+  <h1>💘 Shivam, will you be my Valentine? 💘</h1>
+  <button class="yes" id="yesBtn" onclick="next()">Yes ❤️</button>
+  <button class="no" id="noBtn">No 😢</button>
+</div>
+
+<script>
+const music=document.getElementById("bgm");
+function startMusic(){
+  if(music.paused){
+    music.play();
+    localStorage.setItem("music","on");
+  }
+}
+if(localStorage.getItem("music")==="on"){music.play();}
+
+const noBtn=document.getElementById("noBtn");
+setInterval(()=>{
+  noBtn.style.left=Math.random()*220+"px";
+  noBtn.style.top=Math.random()*160+"px";
+},700);
+
+const yesBtn=document.getElementById("yesBtn");
+let scale=1;
+setInterval(()=>{
+  if(scale<1.4){scale+=0.03;yesBtn.style.transform=`scale(${scale})`;}
+},1000);
+
+function next(){location.href="page2.html";}
+</script>
+</body>
+</html>
