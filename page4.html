@@ -1,33 +1,105 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Moments 💞</title>
+<title>A Little Closer 💞</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
 body{
-  margin:0;height:100vh;
-  background:#ffdde1;
-  display:flex;justify-content:center;align-items:center;
-  font-family:Arial;
+  margin:0;
+  height:100vh;
+  background:linear-gradient(135deg,#ffdde1,#ffc3a0);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-family:Arial,sans-serif;
 }
+
+.card{
+  background:white;
+  padding:30px;
+  border-radius:25px;
+  width:90%;
+  max-width:380px;
+  text-align:center;
+  box-shadow:0 15px 35px rgba(0,0,0,0.25);
+  animation: fadeIn 1.2s ease;
+}
+
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(20px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+h2{
+  color:#ff4d6d;
+  margin-bottom:15px;
+}
+
+.quote{
+  font-size:16px;
+  line-height:1.6;
+  color:#444;
+  margin-bottom:25px;
+}
+
+.quote span{
+  color:#ff4d6d;
+  font-weight:bold;
+}
+
 button{
-  padding:12px 25px;border:none;border-radius:25px;
-  background:#ff4d6d;color:white;
+  padding:12px 28px;
+  border:none;
+  border-radius:25px;
+  background:#ff4d6d;
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+  transition:transform 0.2s;
+}
+
+button:hover{
+  transform:scale(1.05);
 }
 </style>
 </head>
 
 <body onclick="playMusic()">
+
+<!-- Music -->
 <audio id="bgm" src="music.mp3" loop></audio>
 
-<button onclick="next()">Don’t click this button 😅</button>
+<div class="card">
+  <h2>Just Saying… 💫</h2>
+
+  <div class="quote">
+    I don’t need candles or wine to feel the heat,<br>
+    sometimes <span>just sitting close</span> does the magic 😌<br><br>
+
+    Some people hold hands,<br>
+    some steal glances,<br>
+    but I wonder what happens<br>
+    when <span>we stop pretending</span> 🙈
+  </div>
+
+  <button onclick="next()">Don’t click me 😏</button>
+</div>
 
 <script>
-const m=document.getElementById("bgm");
-function playMusic(){if(localStorage.getItem("music")==="on")m.play();}
-playMusic();
-function next(){location.href="page5.html";}
+const music=document.getElementById("bgm");
+
+function playMusic(){
+  if(localStorage.getItem("music")==="on"){
+    music.play().catch(()=>{});
+  }
+}
+
+function next(){
+  window.location.href="page5.html";
+}
 </script>
+
 </body>
 </html>
